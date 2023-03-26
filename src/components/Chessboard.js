@@ -1,42 +1,32 @@
 import React from 'react';
+import Square from './Square.js';
 import './Chessboard.css';
 
-function Chessboard() {
-  const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-  const numbers = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+const Chessboard = ({ board }) => {
+  const renderSquare = (i, piece) => (
+    <Square key={i} piece={piece} />
+  );
 
-  const squares = [];
-
-  for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 10; j++) {
-      const squareColor = (i + j) % 2 === 0 ? 'light' : 'dark';
+  const renderBoard = () => {
+    const squares = [];
+    for (let i = 0; i < 100; i++) {
+      const row = Math.floor(i / 10);
+      const col = i % 10;
+      const isDark = (row % 2) ^ (col % 2);
       squares.push(
-        <div key={letters[j] + numbers[i]} className={`square ${squareColor}`}>
-          {letters[j] + numbers[i]}
+        <div className={`square ${isDark ? 'dark' : 'light'}`} key={i}>
+          {renderSquare(i, board[i])}
         </div>
       );
     }
-  }
+    return squares;
+  };
 
   return (
     <div className="chessboard">
-      <div className="files">
-        {letters.map((letter) => (
-          <div key={letter} className="file">
-            {letter}
-          </div>
-        ))}
-      </div>
-      <div className="ranks">
-        {numbers.map((number) => (
-          <div key={number} className="rank">
-            {number}
-          </div>
-        ))}
-      </div>
-      <div className="board">{squares}</div>
+      {renderBoard()}
     </div>
   );
-}
+};
 
 export default Chessboard;
