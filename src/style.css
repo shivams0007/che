@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+#board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 480px;
+  height: 480px;
+  margin: 0 auto;
+}
+
+.square {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 36px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.square.white {
+  background-color: #f2f2f2;
+}
+
+.square.black {
+  background-color: #b58863;
+  color: #fff;
+}
+
+#captured-pieces {
+  width: 200px;
+  height: 480px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+#captured-pieces h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#captured-pieces ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#captured-pieces li {
+  margin: 10px;
+}
+
+#captured-pieces li span {
+  font-weight: bold;
+}
+
+#messages {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
