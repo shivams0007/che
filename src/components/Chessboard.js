@@ -9,15 +9,15 @@ const Chessboard = ({ board }) => {
 
   const renderBoard = () => {
     const squares = [];
-    for (let i = 0; i < 100; i++) {
-      const row = Math.floor(i / 10);
-      const col = i % 10;
-      const isDark = (row % 2) ^ (col % 2);
-      squares.push(
-        <div className={`square ${isDark ? 'dark' : 'light'}`} key={i}>
-          {renderSquare(i, board[i])}
-        </div>
-      );
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        const isDark = (i % 2 === 0 && j % 2 === 0) || (i % 2 === 1 && j % 2 === 1);
+        squares.push(
+          <div className={`square ${isDark ? 'dark' : 'light'}`} key={10 * i + j}>
+            {renderSquare(10 * i + j, board[10 * i + j])}
+          </div>
+        );
+      }
     }
     return squares;
   };
@@ -28,5 +28,4 @@ const Chessboard = ({ board }) => {
     </div>
   );
 };
-
 export default Chessboard;
